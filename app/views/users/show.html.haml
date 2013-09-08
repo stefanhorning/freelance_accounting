@@ -1,0 +1,32 @@
+- model_class = User
+.page-header
+  %h1
+    = t '.title', :default => @user.name
+%dl.dl-horizontal
+  %dt
+    %strong
+      = "Name"
+      \:
+  %dd= @user.name
+  %dt
+    %strong
+      = "Email"
+      \:
+  %dd= @user.email
+  %dt
+    %strong
+      = "Role"
+      \:
+  %dd= @user.role
+  %dt
+    %strong
+      = "API Token:"
+  %dd
+    - unless @user.authentication_token.nil?
+      = @user.authentication_token
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
+  -#
+  = edit_button(@user)
+  -#
+  = delete_button(@user)

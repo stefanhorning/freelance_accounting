@@ -1,0 +1,31 @@
+%p Minimum password length is 8!
+%br
+= form_for @user, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'text_field'
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text_field'
+  .control-group
+    = f.label :role, :class => 'control-label'
+    - if can? :assign_roles, @user
+      .controls
+        = f.collection_select(:role, User::ROLES, :to_s, :humanize)
+    - else
+      .controls
+        %p= @user.role
+  .control-group
+    = f.label :password, :class => 'control-label'
+    .controls
+      = f.password_field :password, :class => 'text_field'
+  .control-group
+    = f.label :password_confirmation, :class => 'control-label'
+    .controls
+      = f.password_field :password_confirmation, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      users_path, :class => 'btn'                                  |

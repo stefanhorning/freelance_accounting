@@ -1,0 +1,4 @@
+# Git ignores following files:
+/log/*.log
+/tmp
+/.bundle

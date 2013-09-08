@@ -1,0 +1,20 @@
+- model_class = User
+%table.table.table-striped
+  %thead
+    %tr
+      %th= sortable "name"
+      %th= sortable "email"
+      %th= sortable "role"
+      %th= t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, user_path(user)
+        %td= user.email
+        %td= user.role.capitalize
+        %td
+          = edit_button(user, 'btn-mini') if can? :edit, user
+          -#
+          = delete_button(user, 'btn-mini') if can? :delete, user
+%br
+= will_paginate @users
