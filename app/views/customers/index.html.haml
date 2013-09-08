@@ -1,19 +1,8 @@
-%h1 Listing customers
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @customers.each do |customer|
-    %tr
-      %td= customer.name
-      %td= link_to 'Show', customer
-      %td= link_to 'Edit', edit_customer_path(customer)
-      %td= link_to 'Destroy', customer, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Customer', new_customer_path
+- model_class = Customer
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+= render 'list'
+.form-actions
+  = link_to t('.new', :default => t("+ Add customer")), |
+    new_customer_path,                                  |
+    :class => 'btn btn-primary'                         |

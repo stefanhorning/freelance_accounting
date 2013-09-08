@@ -1,9 +1,18 @@
-%p#notice= notice
+- model_class = Customer
+.page-header
+  %h1
+    = t '.title', :default => @customer.name
 
-%p
-  %b Name:
-  = @customer.name
+%dl.dl-horizontal
+  %dt
+    %strong
+      = "Name"
+      \:
+  %dd= @customer.name
 
-= link_to 'Edit', edit_customer_path(@customer)
-\|
-= link_to 'Back', customers_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
+  -#
+  = edit_button(@customer)
+  -#
+  = delete_button(@customer)
