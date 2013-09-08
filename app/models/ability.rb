@@ -11,16 +11,12 @@ class Ability
     if user.role == "admin"
       can :manage, :all
     elsif user.role == "manager"
-      can :manage, [Host, User, Offer, ResearchAttempt]
+      can :manage, [User]
       can :read, :all
-    elsif user.role == "supply_employee"
-      can :update, [Host, Offer]
-      can :create, [ResearchAttempt]
+    elsif user.role == "employee"
+#      can :update, [Bla]
+#      can :create, [Blubb]
       can :read, :all
-    elsif user.role == "researcher"
-      can :manage, [Host]
-      can :create, [ResearchAttempt]
-      can :read, [Site, Offer, ResearchAttempt]
     end
     can [:update, :read], User, :_id => user.id
   end

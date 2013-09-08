@@ -40,8 +40,7 @@ class User
   field :authentication_token, :type => String
 
   # Other fields (not needed for devise):
-  ROLES = %w[admin manager supply_employee researcher]
+  ROLES = %w[admin manager employee]
   field :role,   :type => String
   field :name,   :type => String
-  has_many :research_attempts
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = exception.message
-      redirect_to request.referrer
+#      redirect_to request.referrer
   end
 
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
