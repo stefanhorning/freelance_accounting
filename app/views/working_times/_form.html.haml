@@ -1,5 +1,9 @@
 = form_for @working_time do |f|
   .control-group
+    = f.label :customer_id, :class => 'control-label'
+    .controls
+      = f.collection_select(:customer_id, Customer.all, :id, :name)
+  .control-group
     = f.label :title, :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'text_field'

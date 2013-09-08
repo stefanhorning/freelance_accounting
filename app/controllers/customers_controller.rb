@@ -12,6 +12,7 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @working_times = @customer.working_times.paginate(:page => params[:page], :per_page => 40)
     respond_to do |format|
       format.html
       format.json { render json: @customer }

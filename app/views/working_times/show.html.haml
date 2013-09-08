@@ -3,11 +3,17 @@
   %h1= t '.title', :default => @working_time.title
 .row-fluid
   %p
+    %b Customer:
+    = @working_time.customer.name
+  %p
     %b From:
     = @working_time.from
   %p
     %b To:
     = @working_time.to
+  %p
+    %b Duration (min):
+    = (@working_time.to - @working_time.from) / 60
   %p
     %b Description:
     = @working_time.description

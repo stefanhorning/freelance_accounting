@@ -5,18 +5,21 @@
       %th Title
       %th= sortable "from"
       %th= sortable "to"
-      %th Description
       %th Actions
   %tbody
     - @working_times.each do |working_time|
       %tr
-        %td= working_time.title
+        %td= link_to working_time.title, working_time_path(working_time)
         %td= working_time.from
         %td= working_time.to
-        %td= working_time.description
         %td
           = edit_button(working_time, 'btn-mini') if can? :edit, working_time
           -#
           = delete_button(working_time, 'btn-mini') if can? :delete, working_time
 %br
 = will_paginate @working_times
+
+.form-actions
+  = link_to "Add #{model_class.model_name.human}", |
+    new_working_time_path,                                  |
+    :class => 'btn btn-primary'                             |

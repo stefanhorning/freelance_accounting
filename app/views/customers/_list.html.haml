@@ -4,12 +4,14 @@
     %tr
       %th= sortable "billing_number"
       %th= sortable "name"
+      %th Billing Items
       %th Actions
   %tbody
     - @customers.each do |customer|
       %tr
         %td= customer.billing_number
         %td= link_to customer.name, customer_path(customer)
+        %td= customer.working_times.size
         %td
           = edit_button(customer, 'btn-mini') if can? :edit, customer
           -#
