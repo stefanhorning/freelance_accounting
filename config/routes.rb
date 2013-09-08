@@ -1,5 +1,8 @@
 FreelanceAccounting::Application.routes.draw do
 
+  resources :working_times
+
+
   resources :customers
 
   devise_for :users, :controllers => { :registrations => "users/registrations" }

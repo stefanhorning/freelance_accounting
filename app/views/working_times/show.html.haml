@@ -1,0 +1,20 @@
+- model_class = WorkingTime
+.page-header
+  %h1= t '.title', :default => @working_time.title
+.row-fluid
+  %p
+    %b From:
+    = @working_time.from
+  %p
+    %b To:
+    = @working_time.to
+  %p
+    %b Description:
+    = @working_time.description
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), working_times_path, :class => 'btn'
+  -#
+  = edit_button(@working_time)
+  -#
+  = delete_button(@working_time)

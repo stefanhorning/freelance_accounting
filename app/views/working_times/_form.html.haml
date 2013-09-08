@@ -1,0 +1,22 @@
+= form_for @working_time do |f|
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label :from, :class => 'control-label'
+    .controls
+      = f.text_field :from, :class => 'text_field', :type => 'datetime'
+  .control-group
+    = f.label :to, :class => 'control-label'
+    .controls
+      = f.text_field :to, :class => 'text_field', :type => 'datetime'
+  .control-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_area :description, :class => 'text_area'
+
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      working_times_path, :class => 'btn'                          |

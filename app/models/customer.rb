@@ -12,6 +12,7 @@ class Customer
   field :zipcode, type: String
   field :city, type: String
   field :address, type: String
+  has_many :working_times
 
   validates_presence_of :billing_number
   validates_uniqueness_of :billing_number

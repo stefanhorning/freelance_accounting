@@ -1,0 +1,8 @@
+- model_class = WorkingTime
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+= render 'list'
+.form-actions
+  = link_to t('.new', :default => t("+ Add working time")), |
+    new_working_time_path,                                  |
+    :class => 'btn btn-primary'                             |

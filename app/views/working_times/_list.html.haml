@@ -1,0 +1,22 @@
+- model_class = WorkingTime
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th= sortable "from"
+      %th= sortable "to"
+      %th Description
+      %th Actions
+  %tbody
+    - @working_times.each do |working_time|
+      %tr
+        %td= working_time.title
+        %td= working_time.from
+        %td= working_time.to
+        %td= working_time.description
+        %td
+          = edit_button(working_time, 'btn-mini') if can? :edit, working_time
+          -#
+          = delete_button(working_time, 'btn-mini') if can? :delete, working_time
+%br
+= will_paginate @working_times
