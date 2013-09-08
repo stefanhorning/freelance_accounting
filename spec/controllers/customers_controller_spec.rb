@@ -13,7 +13,17 @@ describe CustomersController do
   # Customer. As you add validations to Customer, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    {
+      name: "Big Corporation",
+      person_name: "Hans Meier",
+      billing_number: 1,
+      hourly_rate: 30.5,
+      email: "hans@big-coporation.com",
+      phone_no: "234 234234234",
+      zipcode: "12312",
+      city: "Berlin",
+      address: "Lustigestr. 123"
+    }
   end
 
   # This should return the minimal set of values that should be in the session

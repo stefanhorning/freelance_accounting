@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
-  let(:host) { FactoryGirl.create(:host, id: "ab123") }
+  let(:customer) { FactoryGirl.create(:customer) }
   let(:sort_column) { "my_column" }
   let(:sort_direction) { "asc" }
 
@@ -24,19 +24,19 @@ describe ApplicationHelper do
   end
 
   it "should create a standard edit button" do
-    edit_button(host).should eq "<a href=\"/hosts/ab123/edit\" class=\"btn \"><span class=\"translation_missing\" title=\"translation missing: en.helpers.links.edit\">Edit</span></a>"
+    edit_button(customer).should eq "<a href=\"/customers/1/edit\" class=\"btn \"><span class=\"translation_missing\" title=\"translation missing: en.helpers.links.edit\">Edit</span></a>"
   end
 
   it "should create small edit button" do
-    edit_button(host, 'btn-mini').should eq "<a href=\"/hosts/ab123/edit\" class=\"btn btn-mini\"><span class=\"translation_missing\" title=\"translation missing: en.helpers.links.edit\">Edit</span></a>"
+    edit_button(customer, 'btn-mini').should eq "<a href=\"/customers/1/edit\" class=\"btn btn-mini\"><span class=\"translation_missing\" title=\"translation missing: en.helpers.links.edit\">Edit</span></a>"
   end
 
   it "should create a standard delete button" do
-    delete_button(host).should eq "<a href=\"/hosts/ab123\" class=\"btn  btn-danger\" data-confirm=\"Are you sure you want to delete?\" data-method=\"delete\" rel=\"nofollow\">Delete</a>"
+    delete_button(customer).should eq "<a href=\"/customers/1\" class=\"btn  btn-danger\" data-confirm=\"Are you sure you want to delete?\" data-method=\"delete\" rel=\"nofollow\">Delete</a>"
   end
 
   it "should create a small delete button" do
-    delete_button(host, 'btn-mini').should eq "<a href=\"/hosts/ab123\" class=\"btn btn-mini btn-danger\" data-confirm=\"Are you sure you want to delete?\" data-method=\"delete\" rel=\"nofollow\">Delete</a>"
+    delete_button(customer, 'btn-mini').should eq "<a href=\"/customers/1\" class=\"btn btn-mini btn-danger\" data-confirm=\"Are you sure you want to delete?\" data-method=\"delete\" rel=\"nofollow\">Delete</a>"
   end
 
 end
