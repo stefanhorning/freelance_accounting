@@ -11,7 +11,7 @@ class Ability
     if user.role == "admin"
       can :manage, :all
     elsif user.role == "manager"
-      can :manage, [User]
+      can :manage, [Customer]
       can :read, :all
     elsif user.role == "employee"
 #      can :update, [Bla]

@@ -4,11 +4,14 @@ class Customer
   include Mongoid::Slug
 
   field :name, type: String
+  field :person_name, type: String
   field :billing_number, type: Integer
+  field :hourly_rate, type: Float
   field :email, type: String
   field :phone_no, type: String
+  field :zipcode, type: String
   field :city, type: String
-  field :adress, type: String
+  field :address, type: String
 
   validates_presence_of :billing_number
   validates_uniqueness_of :billing_number

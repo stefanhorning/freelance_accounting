@@ -1,17 +1,55 @@
 - model_class = Customer
 .page-header
-  %h1
-    = t '.title', :default => @customer.name
-
-%dl.dl-horizontal
-  %dt
-    %strong
-      = "Name"
-      \:
-  %dd= @customer.name
+  %h1= t '.title', :default => @customer.name
+  %small= "Customer since #{@customer.created_at.localtime.strftime('%B %Y')}."
+.row-fluid
+  .span6
+    %h3 Customer Details
+    %table.table.table-bordered
+      %tr
+        %td
+          %strong
+            %i.icon-user
+            Contact Person
+        %td= @customer.person_name
+      %tr
+        %td
+          %strong
+            %i.icon-envelope
+            Email
+        %td= mail_to @customer.email, @customer.email
+      %tr
+        %td
+          %strong
+            %i.icon-phone
+            Phone
+        %td= @customer.phone_no
+      %tr
+        %td
+          %strong
+            %i.icon-home
+            Address
+        %td= "#{@customer.address}, #{@customer.zipcode} #{@customer.city}"
+  .span6
+    %h3 Billing Details
+    %table.table.table-bordered
+      %tr
+        %td
+          %strong
+            %i.icon-barcode
+            Billing number
+        %td= @customer.billing_number
+      %tr
+        %td
+          %strong
+            %i.icon-money
+            Hourly rate
+        %td= "#{@customer.hourly_rate.to_s.gsub('.',',')}0€"
+%br
+%small= "Last updated at #{@customer.updated_at.localtime}"
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
+  = link_to t('.back', :default => t("helpers.links.back")), customers_path, :class => 'btn'
   -#
   = edit_button(@customer)
   -#
