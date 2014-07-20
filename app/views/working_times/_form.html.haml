@@ -10,11 +10,17 @@
   .control-group
     = f.label :from, :class => 'control-label'
     .controls
-      = f.text_field :from, :class => 'text_field', :type => 'datetime'
+      %div{id: "datepicker_from", class: "input-append date"}
+        = f.text_field :from, :class => 'text_field', :type => 'text', 'data-format' => "dd.MM.yyyy hh:mm:ss"
+        %span.add-on
+          %i{"data-time-icon" => "icon-time", "data-date-icon" => "icon-calendar"}
   .control-group
     = f.label :to, :class => 'control-label'
     .controls
-      = f.text_field :to, :class => 'text_field', :type => 'datetime'
+      %div{id: "datepicker_to", class: "input-append date"}
+        = f.text_field :to, :class => 'text_field', :type => 'text', 'data-format' => "dd.MM.yyyy hh:mm:ss"
+        %span.add-on
+          %i{"data-time-icon" => "icon-time", "data-date-icon" => "icon-calendar"}
   .control-group
     = f.label :description, :class => 'control-label'
     .controls
@@ -24,3 +30,4 @@
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), |
       working_times_path, :class => 'btn'                          |
+

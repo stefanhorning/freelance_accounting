@@ -12,6 +12,7 @@ gem 'less-rails'
 gem 'mongoid_slug'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datetimepicker-rails'
 gem 'will_paginate_mongoid'
 
 group :assets do

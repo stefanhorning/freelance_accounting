@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+
+
+$(function() {
+  $('#datepicker_from').datetimepicker({language: 'en'});
+  $('#datepicker_to').datetimepicker({language: 'en'});  
+});
