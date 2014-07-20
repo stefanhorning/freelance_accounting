@@ -10,9 +10,9 @@ class WorkingTime
   belongs_to :customer
 
   validates_presence_of :title
-  
+
   before_save :calculate_duration
-  
+
   private
   def calculate_duration
     self.duration = ((self.to - self.from) / 60).round(2)

@@ -14,6 +14,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datetimepicker-rails'
 gem 'will_paginate_mongoid'
+gem 'mongoid_auto_increment'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

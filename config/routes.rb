@@ -1,5 +1,8 @@
 FreelanceAccounting::Application.routes.draw do
 
+  resources :bills
+
+
   resources :working_times
 
 

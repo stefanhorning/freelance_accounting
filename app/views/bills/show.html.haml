@@ -1,0 +1,60 @@
+- model_class = Bill
+- customer = @bill.customer
+.page-header
+  %h1=t '.title', default: "Bill ##{@bill.bill_id} to #{@bill.customer.name}"
+  %small
+    Full Bill Id:
+    %strong= full_billing_id(customer, @bill)
+
+.row-fluid
+  .span4
+    %h2 Customer Details
+    %table.table.table-bordered
+      %tr
+        %td Customer Number
+        %td= @bill.customer.billing_number
+      %tr
+        %td Name
+        %td= link_to customer.name, customer
+      %tr
+        %td Address
+        %td
+          = customer.person_name
+          %br
+          = customer.address
+          %br
+          = customer.zipcode
+          = customer.city
+    %h2 Billing Details
+    %table.table.table-bordered
+      %tr
+        %td Bill ID
+        %td
+          %strong= full_billing_id(customer, @bill)
+      %tr
+        %td Paid?
+        %td= @bill.paid ? "Yes" : "No"
+      %tr
+        %td Total Time
+        %td= @bill.time_amount
+      %tr
+        %td Total Price
+        %td= @bill.price_amount
+
+  .span7
+    %h2 Billing Items
+    %table.table.table-bordered
+      %tr
+        %th Title
+        %th Worktime in minutes
+        %th Cost in €
+    - @bill.working_times.each do |item|
+      %tr
+        %td= item.title
+        %td= item.duration
+        %td= (item.duration * customer.hourly_rate).round(2)
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), bills_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_bill_path(@bill), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), bill_path(@bill), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

@@ -13,6 +13,7 @@ class Customer
   field :city, type: String
   field :address, type: String
   has_many :working_times
+  has_many :bills
 
   validates_presence_of :billing_number
   validates_uniqueness_of :billing_number
