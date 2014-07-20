@@ -5,6 +5,7 @@
       %th Title
       %th= sortable "from"
       %th= sortable "to"
+      %th Working Time (Minutes)
       %th Actions
   %tbody
     - @working_times.each do |working_time|
@@ -12,6 +13,7 @@
         %td= link_to working_time.title, working_time_path(working_time)
         %td= working_time.from
         %td= working_time.to
+        %td= working_time.duration
         %td
           = edit_button(working_time, 'btn-mini') if can? :edit, working_time
           -#

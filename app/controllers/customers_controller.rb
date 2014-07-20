@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
 
   def show
     @working_times = @customer.working_times.paginate(:page => params[:page], :per_page => 40)
+    @total_time = (@customer.working_times.inject(0){ |sum, time| sum += time.duration } / 60).round(3)
     respond_to do |format|
       format.html
       format.json { render json: @customer }

@@ -45,6 +45,12 @@
             %i.icon-money
             Hourly rate
         %td= "#{@customer.hourly_rate.to_s.gsub('.',',')}0€"
+      %tr
+        %td
+          %strong
+            %i.icon-time
+            Total Working Hours
+        %td= @total_time
 %br
 %small= "Last updated at #{@customer.updated_at.localtime}"
 

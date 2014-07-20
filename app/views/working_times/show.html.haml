@@ -13,7 +13,7 @@
     = @working_time.to
   %p
     %b Duration (min):
-    = (@working_time.to - @working_time.from) / 60
+    = @working_time.duration
   %p
     %b Description:
     = @working_time.description
