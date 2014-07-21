@@ -1,0 +1,28 @@
+- model_class = Bill
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "Bill No"
+      %th= model_class.human_attribute_name(:time_amount)
+      %th= model_class.human_attribute_name(:price_amount)
+      %th= model_class.human_attribute_name(:paid)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @bills.each do |bill|
+      %tr
+        %td= link_to bill.bill_id, bill_path(bill)
+        %td= bill.time_amount
+        %td= number_to_currency(bill.price_amount, :unit=>'€', format: "%n %u")
+        %td= bill.paid ? "Yes" : "No"
+        %td= bill.created_at.strftime("%d.%m.%Y")
+        %td
+          = edit_button(bill, 'btn-mini') if can? :edit, bill
+          -#
+          = delete_button(bill, 'btn-mini') if can? :delete, bill
+%br
+= will_paginate(@bills, param_name: :bill_page)
+
+.form-actions
+  = link_to "Create #{model_class.model_name.human}", new_bill_path, :class => 'btn btn-primary'

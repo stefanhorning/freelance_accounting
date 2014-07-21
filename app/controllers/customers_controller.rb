@@ -12,7 +12,8 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @working_times = @customer.working_times.paginate(:page => params[:page], :per_page => 40)
+    @working_times = @customer.working_times.paginate(:page => params[:page], :per_page => 12)
+    @bills = @customer.bills.paginate(:page => params[:bill_page], :per_page => 6)
     @total_time = (@customer.working_times.inject(0){ |sum, time| sum += time.duration } / 60).round(3)
     respond_to do |format|
       format.html

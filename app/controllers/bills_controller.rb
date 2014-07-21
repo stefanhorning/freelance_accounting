@@ -1,8 +1,10 @@
 class BillsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
 
   def index
-    @bills = Bill.all
-
+    @bills = @bills.paginate(:page => params[:bill_page], :per_page => 6)
     respond_to do |format|
       format.html
       format.json { render json: @bills }
@@ -10,8 +12,6 @@ class BillsController < ApplicationController
   end
 
   def show
-    @bill = Bill.find(params[:id])
-
     respond_to do |format|
       format.html
       format.json { render json: @bill }
@@ -19,8 +19,6 @@ class BillsController < ApplicationController
   end
 
   def new
-    @bill = Bill.new
-
     respond_to do |format|
       format.html
       format.json { render json: @bill }
@@ -28,12 +26,9 @@ class BillsController < ApplicationController
   end
 
   def edit
-    @bill = Bill.find(params[:id])
   end
 
   def create
-    @bill = Bill.new(params[:bill])
-
     respond_to do |format|
       if @bill.save
         format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
@@ -60,7 +55,6 @@ class BillsController < ApplicationController
   end
 
   def destroy
-    @bill = Bill.find(params[:id])
     @bill.destroy
 
     respond_to do |format|

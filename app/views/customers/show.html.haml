@@ -63,4 +63,9 @@
 
 %hr
 %h3 Working Times
-= render 'working_times/list'  
+= render 'working_times/list'
+
+%hr
+%h3 Bills
+%p= "Total: #{@bills.count}, Paid: #{@bills.select{|b| b.paid == true}.size}, Open: #{@bills.select{|b| b.paid == false}.size}"
+= render 'bills/list'
