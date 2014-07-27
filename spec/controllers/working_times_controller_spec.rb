@@ -24,7 +24,11 @@ describe WorkingTimesController do
   # WorkingTime. As you add validations to WorkingTime, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "title" => "MyString" }
+    {
+      "title" => "My Title",
+      "from"  => "27.07.2014 19:02:45",
+      "to"    => "27.07.2014 19:12:45",
+    }
   end
 
   # This should return the minimal set of values that should be in the session

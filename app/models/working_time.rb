@@ -8,8 +8,11 @@ class WorkingTime
   field :duration, type: Float
   field :description, type: String
   belongs_to :customer
+  belongs_to :bill
 
   validates_presence_of :title
+  validates_presence_of :from
+  validates_presence_of :to
 
   before_save :calculate_duration
 

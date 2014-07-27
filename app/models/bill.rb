@@ -15,4 +15,5 @@ class Bill
   validates_uniqueness_of :bill_id, :scope => :customer
   index({ bill_id: 1 }, { unique: true })
   slug  :bill_id, :history => false
+
 end

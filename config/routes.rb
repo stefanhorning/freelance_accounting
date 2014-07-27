@@ -1,11 +1,7 @@
 FreelanceAccounting::Application.routes.draw do
 
   resources :bills
-
-
   resources :working_times
-
-
   resources :customers
 
   devise_for :users, :controllers => { :registrations => "users/registrations" }
