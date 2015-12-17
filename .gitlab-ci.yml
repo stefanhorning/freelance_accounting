@@ -1,3 +1,11 @@
-build_hipster_swag:
+image: ruby:2.1
+services:
+  - mongo
+
+before_script:
+  - bundle_install
+
+rspec:
   script:
-    - "bundle exec rspec"
+    - bundle exec rspec
+
