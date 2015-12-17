@@ -1,0 +1,3 @@
+build_hipster_swag:
+  script:
+    - "bundle exec rspec"

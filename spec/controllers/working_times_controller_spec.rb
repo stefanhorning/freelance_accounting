@@ -20,6 +20,12 @@ require 'spec_helper'
 
 describe WorkingTimesController do
 
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # WorkingTime. As you add validations to WorkingTime, be sure to
   # update the return value of this method accordingly.
